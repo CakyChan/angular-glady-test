@@ -1,0 +1,21 @@
+<p>Montant désiré : {{amount}}</p>
+
+<ul ngbNav #nav="ngbNav" class="nav-tabs">
+    <li ngbNavItem>
+        <a ngbNavLink>Choix Level 1</a>
+        <ng-template ngbNavContent>
+            <app-desired-amount1 (desiredAmount)="setAmount($event)"></app-desired-amount1>
+        </ng-template>
+    </li>
+    <li ngbNavItem>
+        <a ngbNavLink>Choix Level 2</a>
+        <ng-template ngbNavContent>
+            <app-desired-amount2></app-desired-amount2>
+        </ng-template>
+    </li>
+</ul>
+<div [ngbNavOutlet]="nav"></div>
+
+<hr>
+
+<app-validation-amount [amount]="amount"></app-validation-amount>
