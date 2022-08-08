@@ -25,13 +25,9 @@ export class ValidationAmountComponent implements OnInit {
     this.desiredAmount.emit(this.amount);
   }
 
-  resetValidationAmount() {
+  validationAmount() {
     this.showValidation = true;
     this.activeValueCards = null;
-  }
-
-  validationAmount() {
-    this.resetValidationAmount()
     this.giftApi.searchCombinaison(this.amount).subscribe((data)=>{
       this.data = data;
       if (this.data.equal) {
