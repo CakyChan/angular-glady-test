@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
+import { GiftApi } from 'src/app/interfaces/GiftApi';
+import { GiftService } from 'src/app/services/gift.service';
 
 @Component({
   selector: 'app-desired-amount',
@@ -8,10 +10,11 @@ import { Output, EventEmitter } from '@angular/core';
 })
 export class DesiredAmountComponent implements OnInit {
 
-  public amount: number = 0;
+  @Input() public amount: number = 0;
   @Output() desiredAmount = new EventEmitter<number>();
+  public data : GiftApi | null = null;
 
-  constructor() { }
+  constructor(private giftApi: GiftService) { }
 
   ngOnInit(): void {
   }
@@ -21,11 +24,23 @@ export class DesiredAmountComponent implements OnInit {
   }
 
   nextAmount() {
-    this.updateAmount();
+    this.giftApi.searchCombinaison(this.amount + 1).subscribe((data)=>{
+      this.data = data;
+      if (this.data?.ceil) {
+        this.amount = this.data.ceil.value;
+      }
+      this.updateAmount();
+    });
   }
 
   previousAmount() {
-    this.updateAmount();
+    this.giftApi.searchCombinaison(this.amount - 1).subscribe((data)=>{
+      this.data = data;
+      if (this.data?.floor) {
+        this.amount = this.data.floor.value;
+      }
+      this.updateAmount();
+    });
   }
 
 }

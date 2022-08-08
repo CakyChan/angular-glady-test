@@ -1,7 +1,7 @@
 <button type="button" class="btn btn-primary" (click)="validationAmount()">Valider</button> 
 
 <div class="validation" *ngIf="showValidation">
-    <p>Résultat pour le montant : {{amount}}</p>
+    <p>Résultat pour le montant : {{validatedAmount}}</p>
     
     <div *ngIf="activeValueCards">
         Cartes proposées :

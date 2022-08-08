@@ -15,6 +15,7 @@ export class ValidationAmountComponent implements OnInit {
   public data : GiftApi | null = null;
   public showValidation : boolean = false;
   public activeValueCards : ValueCards | null = null;
+  public validatedAmount : number = 0;
 
   constructor(private giftApi: GiftService) { }
 
@@ -25,9 +26,14 @@ export class ValidationAmountComponent implements OnInit {
     this.desiredAmount.emit(this.amount);
   }
 
-  validationAmount() {
+  resetValidationAmount() {
+    this.validatedAmount = this.amount;
     this.showValidation = true;
     this.activeValueCards = null;
+  }
+
+  validationAmount() {
+    this.resetValidationAmount()
     this.giftApi.searchCombinaison(this.amount).subscribe((data)=>{
       this.data = data;
       if (this.data.equal) {
@@ -46,5 +52,6 @@ export class ValidationAmountComponent implements OnInit {
     this.amount = amount.value;
     this.updateAmount();
     this.activeValueCards = amount;
+    this.validatedAmount = this.amount;
   }
 }
