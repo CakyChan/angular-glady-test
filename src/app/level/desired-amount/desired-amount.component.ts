@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
+import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
+import { CalculatorComponentValue } from 'src/app/interfaces/CalculatorComponentValue';
 import { GiftApi } from 'src/app/interfaces/GiftApi';
 import { GiftService } from 'src/app/services/gift.service';
 

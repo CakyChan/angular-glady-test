@@ -2,7 +2,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { GiftApi } from 'src/app/interfaces/GiftApi';
-import { ValueCards } from 'src/app/interfaces/ValueCards';
+import { CalculatorComponentValue } from 'src/app/interfaces/CalculatorComponentValue';
 import { GiftService } from 'src/app/services/gift.service';
 
 import { ValidationAmountComponent } from './validation-amount.component';
@@ -36,14 +36,14 @@ describe('ValidationAmountComponent', () => {
 
   it('selectAmount should change the current amount', () => {
     component.amount = 0;
-    let valueCards : ValueCards = {value: 20, cards: [20]};
+    let valueCards : CalculatorComponentValue = {value: 20, cards: [20]};
     component.selectAmount(valueCards);
     expect(component.amount).toEqual(20);
   })
 
   it('selectAmount should change the activeValueCards value', () => {
     component.amount = 0;
-    let valueCards : ValueCards = {value: 20, cards: [20]};
+    let valueCards : CalculatorComponentValue = {value: 20, cards: [20]};
     component.selectAmount(valueCards);
     expect(component.activeValueCards?.value).toEqual(20);
     expect(component.activeValueCards?.cards).toEqual([20]);

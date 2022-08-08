@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { GiftApi } from 'src/app/interfaces/GiftApi';
-import { ValueCards } from 'src/app/interfaces/ValueCards';
+import { CalculatorComponentValue } from 'src/app/interfaces/CalculatorComponentValue';
 import { GiftService } from 'src/app/services/gift.service';
 
 @Component({
@@ -14,7 +14,7 @@ export class ValidationAmountComponent implements OnInit {
   @Output() desiredAmount = new EventEmitter<number>();
   public data : GiftApi | null = null;
   public showValidation : boolean = false;
-  public activeValueCards : ValueCards | null = null;
+  public activeValueCards : CalculatorComponentValue | null = null;
 
   constructor(private giftApi: GiftService) { }
 
@@ -42,7 +42,7 @@ export class ValidationAmountComponent implements OnInit {
     });
   }
 
-  selectAmount(amount: ValueCards) {
+  selectAmount(amount: CalculatorComponentValue) {
     this.amount = amount.value;
     this.updateAmount();
     this.activeValueCards = amount;

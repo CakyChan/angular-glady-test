@@ -1,7 +1,7 @@
-import { ValueCards } from "./ValueCards";
+import { CalculatorComponentValue } from "./CalculatorComponentValue";
 
 export interface GiftApi {
-    equal: ValueCards|null;
-    floor: ValueCards|null;
-    ceil: ValueCards|null;
+    equal: CalculatorComponentValue|null;
+    floor: CalculatorComponentValue|null;
+    ceil: CalculatorComponentValue|null;
 }
