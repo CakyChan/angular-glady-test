@@ -7,17 +7,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 
 import { LevelComponent } from './level/level.component';
-
-import { DesiredAmount1Component } from './tools/desired-amount1/desired-amount1.component';
-import { DesiredAmount2Component } from './tools/desired-amount2/desired-amount2.component';
-import { ValidationAmountComponent } from './tools/validation-amount/validation-amount.component';
+import { DesiredAmountComponent } from './level/desired-amount/desired-amount.component';
+import { ValidationAmountComponent } from './level/validation-amount/validation-amount.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LevelComponent,
-    DesiredAmount1Component,
-    DesiredAmount2Component,
+    DesiredAmountComponent,
     ValidationAmountComponent
   ],
   imports: [
