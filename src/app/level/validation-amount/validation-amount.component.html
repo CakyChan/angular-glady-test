@@ -1,1 +1,34 @@
-<button type="button" class="btn btn-primary">Valider</button> 
+<button type="button" class="btn btn-primary" (click)="validationAmount()">Valider</button> 
+
+<div class="validation" *ngIf="showValidation">
+    <p>Résultat pour le montant : {{amount}}</p>
+    
+    <div *ngIf="activeValueCards">
+        Cartes proposées :
+        <i *ngFor="let card of activeValueCards.cards">
+            [{{card}}] 
+        </i>
+    </div>
+
+    <div *ngIf="!activeValueCards">
+        <p *ngIf="data && data.floor">
+            Montant proposé de valeur inférieure : {{data.floor.value}}
+            <i *ngFor="let card of data.floor.cards">
+                [{{card}}] 
+            </i>
+            <button type="button" class="btn btn-success" (click)="selectAmount(data.floor)">+</button> 
+        </p>
+
+        <p *ngIf="data && data.ceil">
+            Montant proposé de valeur supérieure : {{data.ceil.value}}
+            <i *ngFor="let card of data.ceil.cards">
+                [{{card}}] 
+            </i>
+            <button type="button" class="btn btn-success" (click)="selectAmount(data.ceil)">+</button> 
+        </p>
+
+        <p *ngIf="data && !data.ceil && !data.floor">
+            Aucun montant possible avec le montant désiré.
+        </p>
+    </div>
+</div>
