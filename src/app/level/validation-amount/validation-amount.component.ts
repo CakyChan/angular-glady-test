@@ -15,7 +15,6 @@ export class ValidationAmountComponent implements OnInit {
   public data : GiftApi | null = null;
   public showValidation : boolean = false;
   public activeValueCards : ValueCards | null = null;
-  public validatedAmount : number = 0;
 
   constructor(private giftApi: GiftService) { }
 
@@ -27,7 +26,6 @@ export class ValidationAmountComponent implements OnInit {
   }
 
   resetValidationAmount() {
-    this.validatedAmount = this.amount;
     this.showValidation = true;
     this.activeValueCards = null;
   }
@@ -52,6 +50,5 @@ export class ValidationAmountComponent implements OnInit {
     this.amount = amount.value;
     this.updateAmount();
     this.activeValueCards = amount;
-    this.validatedAmount = this.amount;
   }
 }

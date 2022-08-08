@@ -1,28 +1,28 @@
 <button type="button" class="btn btn-primary" (click)="validationAmount()">Valider</button> 
 
 <div class="validation" *ngIf="showValidation">
-    <p>Résultat pour le montant : {{validatedAmount}}</p>
-    
     <div *ngIf="activeValueCards">
-        Cartes proposées :
-        <i *ngFor="let card of activeValueCards.cards">
-            [{{card}}] 
-        </i>
+        Votre montant est composé des cartes suivantes :
+        <ul>
+            <li *ngFor="let card of activeValueCards.cards">
+                {{card}}€
+            </li>
+        </ul>
     </div>
 
     <div *ngIf="!activeValueCards">
         <p *ngIf="data && data.floor">
-            Montant proposé de valeur inférieure : {{data.floor.value}}
+            Montant proposé de valeur inférieure : {{data.floor.value}}€ ->
             <i *ngFor="let card of data.floor.cards">
-                [{{card}}] 
+                [{{card}}€] 
             </i>
             <button type="button" class="btn btn-success" (click)="selectAmount(data.floor)">+</button> 
         </p>
 
         <p *ngIf="data && data.ceil">
-            Montant proposé de valeur supérieure : {{data.ceil.value}}
+            Montant proposé de valeur supérieure : {{data.ceil.value}}€ ->
             <i *ngFor="let card of data.ceil.cards">
-                [{{card}}] 
+                [{{card}}€] 
             </i>
             <button type="button" class="btn btn-success" (click)="selectAmount(data.ceil)">+</button> 
         </p>
