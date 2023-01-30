@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { GiftApi } from 'src/app/interfaces/GiftApi';
-import { CalculatorComponentValue } from 'src/app/interfaces/CalculatorComponentValue';
+import { CardsCombinationsResult } from 'src/app/interfaces/CardsCombinationsResult';
+import { CardsCombination } from 'src/app/interfaces/CardsCombination';
 import { GiftService } from 'src/app/services/gift.service';
 
 @Component({
@@ -8,46 +8,43 @@ import { GiftService } from 'src/app/services/gift.service';
   templateUrl: './validation-amount.component.html',
   styleUrls: ['./validation-amount.component.css']
 })
-export class ValidationAmountComponent implements OnInit {
+export class ValidationAmountComponent {
 
   @Input() amount : number = 0;
   @Output() desiredAmount = new EventEmitter<number>();
-  public data : GiftApi | null = null;
-  public activeValueCards : CalculatorComponentValue | null = null;
+  public data?: CardsCombinationsResult;
+  public activeValueCards?: CardsCombination;
   public error: boolean = false;
 
   constructor(private giftApi: GiftService) { }
-
-  ngOnInit(): void {
-  }
 
   updateAmount(): void {
     this.desiredAmount.emit(this.amount);
   }
 
-  selectAmount(amount: CalculatorComponentValue): void {
-    this.amount = amount.value;
+  selectCardsCombination(cardsCombination: CardsCombination): void {
+    this.amount = cardsCombination.value;
     this.updateAmount();
-    this.activeValueCards = amount;
+    this.activeValueCards = cardsCombination;
   }
 
-  resetAllValidationData() : void {
-    this.data = null;
-    this.activeValueCards = null;
+  private resetAllValidationData() : void {
+    this.data = undefined;
+    this.activeValueCards = undefined;
     this.error = false;
   }
 
   validationAmount(): void {
     this.resetAllValidationData();
-    this.giftApi.searchCombinaison(this.amount).subscribe({
+    this.giftApi.searchCombinations(this.amount).subscribe({
       next: (data) => {
         this.data = data;
-        this.activeValueCards = this.data.equal ? this.data.equal : this.activeValueCards;
+        this.activeValueCards = this.data.equal ?? this.activeValueCards;
         if (this.data.ceil && !this.data.floor) {
-          this.selectAmount(this.data.ceil);
+          this.selectCardsCombination(this.data.ceil);
         }
         if (!this.data.ceil && this.data.floor) {
-          this.selectAmount(this.data.floor);
+          this.selectCardsCombination(this.data.floor);
         }
       },
       error: () => {

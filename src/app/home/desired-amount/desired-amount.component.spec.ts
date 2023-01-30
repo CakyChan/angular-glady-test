@@ -1,7 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
-import { GiftApi } from 'src/app/interfaces/GiftApi';
+import { CardsCombinationsResult } from 'src/app/interfaces/CardsCombinationsResult';
 import { GiftService } from 'src/app/services/gift.service';
 
 import { DesiredAmountComponent } from './desired-amount.component';
@@ -35,8 +35,8 @@ describe('DesiredAmountComponent', () => {
 
   it('nextAmount should change the amount', () => {
     const service = TestBed.inject(GiftService);
-    const giftApi : GiftApi = {equal: null, floor: null, ceil: {value: 60, cards: [30,30]}};
-    const spy = spyOn(service, 'searchCombinaison').and.returnValue(of(giftApi));
+    const giftApi : CardsCombinationsResult = {equal: undefined, floor: undefined, ceil: {value: 60, cards: [30,30]}};
+    const spy = spyOn(service, 'searchCombinations').and.returnValue(of(giftApi));
     component.nextAmount();
     expect(spy).toHaveBeenCalled();
     expect(component.amount).toEqual(60);
@@ -44,8 +44,8 @@ describe('DesiredAmountComponent', () => {
 
   it('previousAmount should change the amount', () => {
     const service = TestBed.inject(GiftService);
-    const giftApi : GiftApi = {equal: null, floor: {value: 55, cards: [30,25]}, ceil: null};
-    const spy = spyOn(service, 'searchCombinaison').and.returnValue(of(giftApi));
+    const giftApi : CardsCombinationsResult = {equal: undefined, floor: {value: 55, cards: [30,25]}, ceil: undefined};
+    const spy = spyOn(service, 'searchCombinations').and.returnValue(of(giftApi));
     component.previousAmount();
     expect(spy).toHaveBeenCalled();
     expect(component.amount).toEqual(55);

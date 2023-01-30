@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { GiftApi } from '../interfaces/GiftApi';
+import { CardsCombinationsResult } from '../interfaces/CardsCombinationsResult';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class GiftService {
 
   constructor(private http:HttpClient) { }
 
-  searchCombinaison(amount: Number): Observable<GiftApi> {
-    return this.http.get<GiftApi>('http://localhost:3000/shop/5/search-combination?amount=' + amount, this.requestOptions);
+  searchCombinations(amount: Number): Observable<CardsCombinationsResult> {
+    return this.http.get<CardsCombinationsResult>('http://localhost:3000/shop/5/search-combination?amount=' + amount, this.requestOptions);
   }
 }

@@ -1,20 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
 
   public amount: number = 0;
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-  setAmount(value: any): void {
+  setAmount(value: number): void {
     this.amount = value;
   }
 

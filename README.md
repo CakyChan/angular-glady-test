@@ -35,5 +35,5 @@ The API is called in the **GiftService**.
 
 The project used two differents interfaces :
 
-- **CalculatorComponentValue** : Combination of value and cards
-- **GiftApi** : Results from the API
+- **CardsCombination** : Combination of value and cards
+- **CardsCombinationsResult** : Results from the API

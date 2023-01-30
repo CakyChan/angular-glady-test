@@ -7,24 +7,22 @@ import { GiftService } from 'src/app/services/gift.service';
   templateUrl: './desired-amount.component.html',
   styleUrls: ['./desired-amount.component.css']
 })
-export class DesiredAmountComponent implements OnInit {
+export class DesiredAmountComponent {
 
   @Input() public amount: number = 0;
   @Output() desiredAmount = new EventEmitter<number>();
-  public error : boolean = false;
+  public error: boolean = false;
 
   constructor(private giftApi: GiftService) { }
-
-  ngOnInit(): void {
-  }
   
   updateAmount(): void {
+    this.error = false;
     this.desiredAmount.emit(this.amount);
   }
 
   nextAmount(): void {
     this.error = false;
-    this.giftApi.searchCombinaison(this.amount + 1).subscribe({
+    this.giftApi.searchCombinations(this.amount + 1).subscribe({
       next: (data) => {
         this.amount = data.ceil ? data.ceil.value : this.amount;
         this.updateAmount();
@@ -37,7 +35,7 @@ export class DesiredAmountComponent implements OnInit {
 
   previousAmount(): void {
     this.error = false;
-    this.giftApi.searchCombinaison(this.amount - 1).subscribe({
+    this.giftApi.searchCombinations(this.amount - 1).subscribe({
       next: (data) => {
         this.amount = data.floor ? data.floor.value : this.amount;
         this.updateAmount();

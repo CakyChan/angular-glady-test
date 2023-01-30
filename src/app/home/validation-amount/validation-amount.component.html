@@ -1,35 +1,37 @@
 <button type="button" class="btn btn-primary" (click)="validationAmount()">Valider</button> 
 
 <div *ngIf="activeValueCards || data" class="validation">
-    <div *ngIf="activeValueCards">
+    <div *ngIf="activeValueCards; else noActiveValueCards">
         Votre montant est composé des cartes suivantes :
         <ul>
             <li *ngFor="let card of activeValueCards.cards">
-                {{card}}€
+                {{ card }}€
             </li>
         </ul>
     </div>
-    <div *ngIf="!activeValueCards">
-        <p *ngIf="data && data.floor">
-            Montant proposé de valeur inférieure : {{data.floor.value}}€ ->
-            <i *ngFor="let card of data.floor.cards">
-                [{{card}}€] 
-            </i>
-            <button type="button" class="btn btn-success" (click)="selectAmount(data.floor)">+</button> 
-        </p>
+    <ng-template #noActiveValueCards>
+        <div>
+            <p *ngIf="data && data.floor">
+                Montant proposé de valeur inférieure : {{ data.floor.value }}€ ->
+                <i *ngFor="let cardAmount of data.floor.cards">
+                    [{{ cardAmount }}€] 
+                </i>
+                <button (click)="selectCardsCombination(data.floor)" type="button" class="btn btn-success">+</button> 
+            </p>
 
-        <p *ngIf="data && data.ceil">
-            Montant proposé de valeur supérieure : {{data.ceil.value}}€ ->
-            <i *ngFor="let card of data.ceil.cards">
-                [{{card}}€] 
-            </i>
-            <button type="button" class="btn btn-success" (click)="selectAmount(data.ceil)">+</button> 
-        </p>
+            <p *ngIf="data && data.ceil">
+                Montant proposé de valeur supérieure : {{ data.ceil.value }}€ ->
+                <i *ngFor="let cardAmount of data.ceil.cards">
+                    [{{ cardAmount }}€] 
+                </i>
+                <button (click)="selectCardsCombination(data.ceil)" type="button" class="btn btn-success">+</button> 
+            </p>
 
-        <p *ngIf="data && !data.ceil && !data.floor">
-            Aucun montant possible avec le montant désiré.
-        </p>
-    </div>
+            <p *ngIf="data && !data.ceil && !data.floor">
+                Aucun montant possible avec le montant désiré.
+            </p>
+        </div>
+    </ng-template>
 </div>
 
 <div *ngIf="error" class="validation">
