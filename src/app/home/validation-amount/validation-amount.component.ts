@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CardsCombinationsResult } from 'src/app/interfaces/CardsCombinationsResult';
 import { CardsCombination } from 'src/app/interfaces/CardsCombination';
 import { GiftService } from 'src/app/services/gift.service';
