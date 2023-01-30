@@ -24,16 +24,16 @@ There is also two buttons that the user can use to switch to the previous or nex
 
 ## Components and services
 
-The project is divided into two components :
+The home of this project is divided into two components :
 
-- DesiredAmountComponent : This component will allow the user can to fill the desired amount and also click two buttons to switch to the previous or next possible amount
-- ValidationAmountComponent : This component will allow to submit the desired amount and show all the informations about gift cards combination
+- **DesiredAmountComponent** : This component will allow the user can to fill the desired amount and also click two buttons to switch to the previous or next possible amount
+- **ValidationAmountComponent** : This component will allow to submit the desired amount and show all the informations about gift cards combination
 
-The API is called in the GiftService.
+The API is called in the **GiftService**.
 
 ## Interfaces
 
 The project used two differents interfaces :
 
-- CalculatorComponentValue : Combination of value and cards
-- GiftApi : Results from the API
+- **CalculatorComponentValue** : Combination of value and cards
+- **GiftApi** : Results from the API
