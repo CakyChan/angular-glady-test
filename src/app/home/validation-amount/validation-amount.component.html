@@ -1,6 +1,6 @@
 <button type="button" class="btn btn-primary" (click)="validationAmount()">Valider</button> 
 
-<div class="validation" *ngIf="showValidation">
+<div *ngIf="activeValueCards || data" class="validation">
     <div *ngIf="activeValueCards">
         Votre montant est composé des cartes suivantes :
         <ul>
@@ -9,7 +9,6 @@
             </li>
         </ul>
     </div>
-
     <div *ngIf="!activeValueCards">
         <p *ngIf="data && data.floor">
             Montant proposé de valeur inférieure : {{data.floor.value}}€ ->
@@ -31,4 +30,8 @@
             Aucun montant possible avec le montant désiré.
         </p>
     </div>
+</div>
+
+<div *ngIf="error" class="validation">
+    Erreur API
 </div>

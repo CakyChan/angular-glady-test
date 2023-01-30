@@ -4,17 +4,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-import { LevelComponent } from './level/level.component';
-import { DesiredAmountComponent } from './level/desired-amount/desired-amount.component';
-import { ValidationAmountComponent } from './level/validation-amount/validation-amount.component';
+import { HomeComponent } from './home/home.component';
+import { DesiredAmountComponent } from './home/desired-amount/desired-amount.component';
+import { ValidationAmountComponent } from './home/validation-amount/validation-amount.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LevelComponent,
+    HomeComponent,
     DesiredAmountComponent,
     ValidationAmountComponent
   ],
@@ -22,8 +22,9 @@ import { ValidationAmountComponent } from './level/validation-amount/validation-
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+    HttpClientModule,
     FormsModule,
-    HttpClientModule
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [

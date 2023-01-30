@@ -1,11 +1,11 @@
-
 <div class="row">
     <div class="col-md-2">
+        <p>Montant désiré :</p>
         <input type=number [(ngModel)]="amount" (ngModelChange)="updateAmount()">
     </div>
     <div class="col-md-2">
         <button type="button" class="btn btn-secondary" (click)="nextAmount()">Montant suivant</button>
         <button type="button" class="btn btn-secondary" (click)="previousAmount()">Montant précédent</button> 
+        <span *ngIf="error">Opération impossible (Erreur API)</span>
     </div>
 </div>
-
