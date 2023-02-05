@@ -24,8 +24,9 @@ There is also two buttons that the user can use to switch to the previous or nex
 
 ## Components and services
 
-The home of this project is divided into two components :
+In the **HomeComponent** you can find the **GiftCardsComponent** that could be used as a form control of homeForm
 
+The **GiftCardsComponent** is divided into two components :
 - **DesiredAmountComponent** : This component will allow the user can to fill the desired amount and also click two buttons to switch to the previous or next possible amount
 - **ValidationAmountComponent** : This component will allow to submit the desired amount and show all the informations about gift cards combination
 
@@ -35,5 +36,5 @@ The API is called in the **GiftService**.
 
 The project used two differents interfaces :
 
-- **CardsCombination** : Combination of value and cards
+- **CalculatorComponentValue** : Combination of value and cards
 - **CardsCombinationsResult** : Results from the API
