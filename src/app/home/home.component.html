@@ -1,2 +1,7 @@
-<desired-amount (desiredAmount)="setAmount($event)" [amount]="amount"></desired-amount>
-<validation-amount (desiredAmount)="setAmount($event)" [amount]="amount"></validation-amount>
+<form [formGroup]="homeForm" (ngSubmit)="submit()">
+    <giftCards formControlName="giftCardsCombination"></giftCards>
+</form>
+
+<hr>
+
+{{ homeForm.value|json }}

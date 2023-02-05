@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CardsCombinationsResult } from 'src/app/interfaces/CardsCombinationsResult';
-import { CardsCombination } from 'src/app/interfaces/CardsCombination';
+import { CalculatorComponentValue } from 'src/app/interfaces/CalculatorComponentValue';
 import { GiftService } from 'src/app/services/gift.service';
 
 @Component({
@@ -10,36 +10,36 @@ import { GiftService } from 'src/app/services/gift.service';
 })
 export class ValidationAmountComponent {
 
-  @Input() amount : number = 0;
-  @Output() desiredAmount = new EventEmitter<number>();
+  @Input() cardsCombination : CalculatorComponentValue = {} as CalculatorComponentValue;
+  @Output() desiredCardsCombination = new EventEmitter<CalculatorComponentValue>();
   public data?: CardsCombinationsResult;
-  public activeValueCards?: CardsCombination;
   public error: boolean = false;
 
   constructor(private giftApi: GiftService) { }
 
-  updateAmount(): void {
-    this.desiredAmount.emit(this.amount);
+  updateCardsCombination(): void {
+    this.desiredCardsCombination.emit(this.cardsCombination);
   }
 
-  selectCardsCombination(cardsCombination: CardsCombination): void {
-    this.amount = cardsCombination.value;
-    this.updateAmount();
-    this.activeValueCards = cardsCombination;
+  selectCardsCombination(cardsCombination: CalculatorComponentValue): void {
+    this.cardsCombination = cardsCombination;
+    this.updateCardsCombination();
   }
 
   private resetAllValidationData() : void {
     this.data = undefined;
-    this.activeValueCards = undefined;
+    this.cardsCombination.cards = [];
     this.error = false;
   }
 
   validationAmount(): void {
     this.resetAllValidationData();
-    this.giftApi.searchCombinations(this.amount).subscribe({
+    this.giftApi.searchCombinations(this.cardsCombination.value).subscribe({
       next: (data) => {
         this.data = data;
-        this.activeValueCards = this.data.equal ?? this.activeValueCards;
+        if (this.data.equal) {
+          this.selectCardsCombination(this.data.equal)
+        }
         if (this.data.ceil && !this.data.floor) {
           this.selectCardsCombination(this.data.ceil);
         }

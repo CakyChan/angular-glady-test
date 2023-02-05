@@ -7,16 +7,18 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+import { GiftCardsComponent } from './home/giftCards/giftCards.component';
+import { DesiredAmountComponent } from './home/giftCards/desired-amount/desired-amount.component';
+import { ValidationAmountComponent } from './home/giftCards/validation-amount/validation-amount.component';
 import { HomeComponent } from './home/home.component';
-import { DesiredAmountComponent } from './home/desired-amount/desired-amount.component';
-import { ValidationAmountComponent } from './home/validation-amount/validation-amount.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
+    GiftCardsComponent,
     DesiredAmountComponent,
-    ValidationAmountComponent
+    ValidationAmountComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

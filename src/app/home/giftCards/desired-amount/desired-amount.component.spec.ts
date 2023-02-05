@@ -26,11 +26,11 @@ describe('DesiredAmountComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('updateAmount should be emit', () => {
-    component.amount = 30;
-    spyOn(component.desiredAmount, 'emit');
-    component.updateAmount();
-    expect(component.desiredAmount.emit).toHaveBeenCalled();
+  it('updateCardsCombination should be emit', () => {
+    component.cardsCombination.value = 30;
+    spyOn(component.desiredCardsCombination, 'emit');
+    component.updateCardsCombination();
+    expect(component.desiredCardsCombination.emit).toHaveBeenCalled();
   })
 
   it('nextAmount should change the amount', () => {
@@ -39,7 +39,7 @@ describe('DesiredAmountComponent', () => {
     const spy = spyOn(service, 'searchCombinations').and.returnValue(of(giftApi));
     component.nextAmount();
     expect(spy).toHaveBeenCalled();
-    expect(component.amount).toEqual(60);
+    expect(component.cardsCombination.value).toEqual(60);
   })
 
   it('previousAmount should change the amount', () => {
@@ -48,7 +48,7 @@ describe('DesiredAmountComponent', () => {
     const spy = spyOn(service, 'searchCombinations').and.returnValue(of(giftApi));
     component.previousAmount();
     expect(spy).toHaveBeenCalled();
-    expect(component.amount).toEqual(55);
+    expect(component.cardsCombination.value).toEqual(55);
   })
 
 });

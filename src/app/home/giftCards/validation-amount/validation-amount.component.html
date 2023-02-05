@@ -1,10 +1,10 @@
 <button type="button" class="btn btn-primary" (click)="validationAmount()">Valider</button> 
 
-<div *ngIf="activeValueCards || data" class="validation">
-    <div *ngIf="activeValueCards; else noActiveValueCards">
+<div *ngIf="cardsCombination.cards && cardsCombination.cards.length > 0 || data" class="validation">
+    <div *ngIf="cardsCombination.cards.length > 0; else noActiveValueCards">
         Votre montant est composé des cartes suivantes :
         <ul>
-            <li *ngFor="let card of activeValueCards.cards">
+            <li *ngFor="let card of cardsCombination.cards">
                 {{ card }}€
             </li>
         </ul>

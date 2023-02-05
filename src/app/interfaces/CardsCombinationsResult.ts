@@ -1,7 +1,7 @@
-import { CardsCombination } from "./CardsCombination";
+import { CalculatorComponentValue } from "./CalculatorComponentValue";
 
 export interface CardsCombinationsResult {
-    equal?: CardsCombination;
-    floor?: CardsCombination;
-    ceil?: CardsCombination;
+    equal?: CalculatorComponentValue;
+    floor?: CalculatorComponentValue;
+    ceil?: CalculatorComponentValue;
 }
